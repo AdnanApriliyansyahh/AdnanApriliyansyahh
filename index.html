@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proof of Concept</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Latar belakang gelap */
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #00ff00; /* Warna hijau neon */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: left;
+            font-size: 1.5em;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00, 0 0 35px #00ff00;
+            transition: all 0.5s ease-in-out;
+            white-space: pre-wrap; /* Biarkan teks otomatis wrap */
+            word-break: break-word; /* Pecah kata jika terlalu panjang */
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto; /* Scroll jika melebihi tinggi layar */
+        }
+        h2:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+            color: #ff00ff;
+        }
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 2.5em;
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var domain = document.domain;
+        if (domain === "" || domain === "127.0.0.1") {
+            domain = "";
+        } else {
+            domain = " " + domain;
+        }
+
+        var referrer = document.referrer;
+        if (referrer === "") {
+            referrer = " - ";
+        } else {
+            referrer = " " + referrer;
+        }
+
+        // Tulisan yang ingin ditampilkan
+        var textToType = "Proof of Concept" + domain + ". Referrer:" + referrer;
+
+        var elem = document.createElement("h2");
+        document.body.appendChild(elem);
+
+        var i = 0;
+        function typeWriter() {
+            if (i < textToType.length) {
+                elem.textContent += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        window.onload = function() {
+            typeWriter();
+        };
+    </script>
+</body>
+</html>
