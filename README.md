@@ -9,4 +9,4 @@ Web Application Penetration Tester and Offensive Security Researcher. This profi
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adnanapriliyansyah)
 
 ## 📈 GitHub Stats
-![Adnan's GitHub stats](https://github-readme-stats.vercel.app/api?username=AdnanApriliyansyahh&show_icons=true&theme=radical)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AdnanApriliyansyahh&theme=gotham&hide_border=false&include_all_commits=true&count_private=true&layout=compact&cache_seconds=1800)
