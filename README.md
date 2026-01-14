@@ -5,7 +5,7 @@ Web Application Penetration Tester and Offensive Security Researcher. This profi
 
 ##  🌐 Socials:
 [![Portfolio](https://img.shields.io/badge/Portfolio-%231DA1F2.svg?logo=Portfolio&logoColor=white)](https://apriliyansyah.eu.org)
-[![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:adnan@cyberdude.com)
+[![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:adnan@apriliyansyah.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adnanapriliyansyah)
 
 ## 📈 GitHub Stats
