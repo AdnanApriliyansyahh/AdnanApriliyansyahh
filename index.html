@@ -1,279 +1,524 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="terminal">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad Adnan Apriliyansyah </title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <meta name="description" content="Portofolio Muhammad Adnan Apriliyansyah — Cybersecurity Researcher - Bug Hunter - Bug Bounty - Ethical Hacker - IT Support.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e0a" />
+  <title>Adnan Apriliyansyah — Cybersecurity Researcher</title>
+  <meta name="description" content="Portfolio of Muhammad Adnan Apriliyansyah — Cybersecurity Researcher, Web Penetration Tester, and Bug Hunter specializing in Web & API Security." />
+  <meta property="og:title" content="Adnan Apriliyansyah — Cybersecurity Researcher" />
+  <meta property="og:description" content="Cybersecurity Researcher & Web Penetration Tester." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0e0a'/%3E%3Ctext x='50' y='62' font-size='52' text-anchor='middle' fill='%2300ff88' font-family='monospace' font-weight='bold'%3E%26gt;_%3C/text%3E%3C/svg%3E" />
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Muhammad Adnan Apriliyansyah",
-  "url": "https://apriliyansyah.com",
-  "url": "https://adnan.apriliyansyah.com",
-  "sameAs": [
-    "https://www.instagram.com/adnanapriliyansyah",
-    "https://github.com/AdnanApriliyansyahh"
-  ],
-  "jobTitle": "Cybersecurity Researcher - Ethical Hacker - Bug Hunter",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Freelance"
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Adnan Apriliyansyah",
+    "url": "https://apriliyansyah.com",
+    "sameAs": [
+      "https://www.instagram.com/adnanapriliyansyah",
+      "https://github.com/AdnanApriliyansyahh",
+      "https://medium.com/@muhadnan2828/"
+    ],
+    "jobTitle": "Cybersecurity Researcher - Ethical Hacker - Bug Hunter",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance"
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo">
-          <a href="#home">AdnanApriliyansyah <span></span></a>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#response">Responsible Disclosure</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#certifications">Certifications</a></li>
- <!--         <li><a href="#education">Education</a></li> -->
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
+  <!-- CRT Overlay Effects -->
+  <div class="crt-scanlines" aria-hidden="true"></div>
+  <div class="crt-noise" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+
+  <!-- Boot Screen -->
+  <div id="boot-screen" class="boot-screen" aria-hidden="false">
+    <canvas id="boot-canvas" class="boot-canvas" aria-hidden="true"></canvas>
+    <div class="boot-content">
+      <div class="boot-logo">
+        <span class="boot-bracket">&gt;</span><span class="boot-handle" id="boot-handle">XTrovert</span><span class="boot-cursor-blink">_</span>
+      </div>
+      <div class="boot-subtitle">cybersecurity · red team · offensive research</div>
+      <div class="boot-progress">
+        <div class="boot-progress-bar"><div class="boot-progress-fill" id="boot-progress-fill"></div></div>
+        <div class="boot-progress-label"><span id="boot-percent">0%</span> &nbsp;<span id="boot-stage">initializing...</span></div>
+      </div>
+      <div class="boot-lines">
+        <div class="boot-line"><span class="boot-ok">[ ok ]</span> loading kernel modules</div>
+        <div class="boot-line"><span class="boot-ok">[ ok ]</span> mounting /dev/exploit</div>
+        <div class="boot-line"><span class="boot-ok">[ ok ]</span> initializing crypto primitives</div>
+        <div class="boot-line"><span class="boot-warn">[warn]</span> bypassing WAF heuristics</div>
+        <div class="boot-line"><span class="boot-ok">[ ok ]</span> handshake with C2</div>
+        <div class="boot-line boot-final"><span class="boot-ok">[ ok ]</span> system ready<span class="boot-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" data-hover>
+        <span class="logo-bracket">&gt;</span><span class="logo-name">_</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about" data-hover><span class="link-num">01</span> <span class="link-text">about</span></a>
+        <a href="#skills" data-hover><span class="link-num">02</span> <span class="link-text">skills</span></a>
+        <a href="#work" data-hover><span class="link-num">03</span> <span class="link-text">disclosure</span></a>
+        <a href="#experience" data-hover><span class="link-num">04</span> <span class="link-text">experience</span></a>
+        <a href="#certs" data-hover><span class="link-num">05</span> <span class="link-text">certs</span></a>
+        <a href="#contact" data-hover><span class="link-num">06</span> <span class="link-text">contact</span></a>
       </nav>
+      <div class="nav-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text">AVAILABLE FOR ENGAGEMENT</span>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <section id="home" class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Muhammad Adnan Apriliyansyah</h1>
-        <h2>Cybersecurity Researcher | Web Petentration Tester</h2>
-<!--        <p>I help organizations secure their applications and infrastructure by identifying and reporting vulnerabilities. Specializing in <strong>Web & API Security</strong>.</p> -->
-        <div class="cta-buttons">
-          <button class="btn primary-btn" data-target="#contact">Get In Touch</button>
-          <button class="btn secondary-btn" data-target="#response">Responsible Disclosure</button>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-meta">
+          <span class="meta-item"><span class="meta-label">$</span> whoami</span>
         </div>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/adnanapriliyansyah" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://github.com/AdnanApriliyansyahh" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.openbugbounty.org/researchers/AdnanApriliyansyahh/" target="_blank"><i class="fas fa-bug"></i></a>
-          <a href="https://medium.com/@muhadnan2828/" target="_blank"><i class="fa-brands fa-medium"></i></a>
+        <h1 class="hero-title">
+          <span class="title-line title-prefix">root@apriliyansyah</span><span class="title-sep">:</span><span class="title-path">~</span><span class="title-cursor">#</span>
+          <span class="title-line title-name" data-text="Adnan_Apriliyansyah">Adnan_Apriliyansyah</span>
+        </h1>
+        <p class="hero-tagline">
+          <span class="tagline-prefix">// </span>
+          <span class="tagline-typed" id="typed"></span>
+          <span class="tagline-caret">█</span>
+        </p>
+        <p class="hero-bio">
+          Independent cybersecurity researcher and web penetration tester. I help organizations secure their applications by identifying vulnerabilities before they are exploited. Specialized in <strong>Web &amp; API Security</strong>.
+        </p>
+        <div class="hero-stats" id="hero-stats">
+          <div class="stat">
+            <div class="stat-value" data-count="10">0</div>
+            <div class="stat-label">Disclosures</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-count="2023">0</div>
+            <div class="stat-label">Started Hunt</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-count="4">0</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-count="2">0</div>
+            <div class="stat-label">Roles active</div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#work" class="btn btn-primary" data-hover>
+            <span class="btn-text">view_disclosure</span>
+            <span class="btn-icon">→</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost" data-hover>
+            <span class="btn-text">./engage.sh</span>
+            <span class="btn-icon">▸</span>
+          </a>
         </div>
       </div>
-      <div class="hero-image">
-        <div class="security-graphic">
-          <div class="shield"><i class="fas fa-shield-alt"></i></div>
-          <div class="ripple"></div>
-          <div class="binary"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <a href="#about" class="scroll-cue" aria-label="Scroll to about">
+        <span class="cue-text">scroll</span>
+        <span class="cue-line"></span>
+      </a>
+    </section>
 
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <h2>About Me</h2>
-        <div class="underline"></div>
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title"><span class="title-bracket">[</span> about <span class="title-bracket">]</span></h2>
+        <span class="section-line"></span>
       </div>
-      <div class="about-content">
+      <div class="about-grid">
         <div class="about-text">
-          <p>Hello! I’m <strong>Adnan</strong>, a cybersecurity researcher who started my journey in 2023. Since then, I’ve focused on <em>web penetration testing</em>, bug bounty, and responsible disclosure.</p>
-          <p>I believe every vulnerability fixed is a step toward a safer internet.</p>
+          <p class="lead">
+            Hello! I’m Adnan, a cybersecurity researcher focused on web penetration testing and responsible disclosure.
+          </p>
+          <p>
+            Since 2023, I have been actively involved in <span class="hl">bug bounty programs</span> and independent security research. My journey is driven by the belief that every vulnerability fixed is a step toward a safer internet for everyone.
+          </p>
+          <p>
+            I specialize in identifying flaws in web applications and APIs following OWASP standards. Currently, I also serve as Field Support at Moka POS while continuing my offensive security research in my spare time.
+          </p>
+          <ul class="about-list">
+            <li><span class="list-key">location:</span><span class="list-val">Makassar, Indonesia</span></li>
+            <li><span class="list-key">languages:</span><span class="list-val">Bahasa Indonesia, English</span></li>
+            <li><span class="list-key">timezone:</span><span class="list-val">WITA · UTC+8</span></li>
+            <li><span class="list-key">availability:</span><span class="list-val">Open for freelance</span></li>
+            <li><span class="list-key">email:</span><span class="list-val">adnan@apriliyansyah.com</span></li>
+          </ul>
         </div>
+        <aside class="about-card">
+          <div class="card-head">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-title">~/about.json</span>
+          </div>
+          <pre class="card-body"><code><span class="c-key">"handle"</span>: <span class="c-str">"AdnanApriliyansyahh"</span>,
+<span class="c-key">"role"</span>: <span class="c-str">"cybersecurity researcher"</span>,
+<span class="c-key">"focus"</span>: [
+  <span class="c-str">"web penetration testing"</span>,
+  <span class="c-str">"api security"</span>,
+  <span class="c-str">"vulnerability assessment"</span>,
+  <span class="c-str">"responsible disclosure"</span>
+],
+<span class="c-key">"interests"</span>: [
+  <span class="c-str">"OWASP standards"</span>,
+  <span class="c-str">"bug bounty"</span>,
+  <span class="c-str">"recon tools"</span>
+],
+<span class="c-key">"available"</span>: <span class="c-bool">true</span></code></pre>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title"><span class="title-bracket">[</span> skills <span class="title-bracket">]</span></h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card" data-hover>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+            </svg>
+          </div>
+          <h3 class="skill-name">Security Expertise</h3>
+          <p class="skill-desc">Vulnerability assessment following OWASP standards, focusing on web and API attack surfaces.</p>
+          <ul class="skill-tags">
+            <li>Web Pentest</li><li>API Security</li><li>Vuln Assessment</li>
+          </ul>
+          <div class="skill-meter">
+            <div class="meter-fill" data-fill="85"></div>
+          </div>
+        </article>
+
+        <article class="skill-card" data-hover>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2"/>
+            </svg>
+          </div>
+          <h3 class="skill-name">Tools &amp; Recon</h3>
+          <p class="skill-desc">Proficient with industry-standard security tools for discovery, enumeration, and exploitation.</p>
+          <ul class="skill-tags">
+            <li>Burp Suite</li><li>Nmap</li><li>Recon Tools</li><li>Exploit Frameworks</li>
+          </ul>
+          <div class="skill-meter">
+            <div class="meter-fill" data-fill="90"></div>
+          </div>
+        </article>
+
+        <article class="skill-card" data-hover>
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3 class="skill-name">Support &amp; Troubleshooting</h3>
+          <p class="skill-desc">Experience in hardware/software troubleshooting, data management, and training for POS systems.</p>
+          <ul class="skill-tags">
+            <li>IT Support</li><li>POS Systems</li><li>Hardware Maintenance</li>
+          </ul>
+          <div class="skill-meter">
+            <div class="meter-fill" data-fill="80"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DISCLOSURE -->
+    <section class="section work" id="work">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title"><span class="title-bracket">[</span> responsible_disclosure <span class="title-bracket">]</span></h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="work-filters" role="tablist">
+        <button class="filter-btn active" data-filter="all">all</button>
+        <button class="filter-btn" data-filter="bugbounty">bug bounty</button>
+        <button class="filter-btn" data-filter="gov">government</button>
+        <button class="filter-btn" data-filter="other">other</button>
+      </div>
+      <div class="work-grid" id="work-grid">
+        <article class="work-card" data-category="bugbounty" data-hover>
+          <div class="work-head"><span class="work-tag tag-bounty">HALL OF FAME</span></div>
+          <h3 class="work-title">BukuWarung</h3>
+          <p class="work-desc">Recognized for responsibly reporting vulnerabilities in their ecosystem.</p>
+          <div class="work-foot">
+            <a href="https://bukuwarung.com/hall-of-fame/" target="_blank" class="tech" data-hover>View HoF ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="bugbounty" data-hover>
+          <div class="work-head"><span class="work-tag tag-bounty">OPENBUG BOUNTY</span></div>
+          <h3 class="work-title">Asana</h3>
+          <p class="work-desc">Security researcher recognition on Open Bug Bounty platform.</p>
+          <div class="work-foot">
+            <a href="https://www.openbugbounty.org/reports/4257343/" target="_blank" class="tech" data-hover>View Report ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="bugbounty" data-hover>
+          <div class="work-head"><span class="work-tag tag-bounty">OPENBUG BOUNTY</span></div>
+          <h3 class="work-title">Redocly</h3>
+          <p class="work-desc">Reported security flaws acknowledged on Open Bug Bounty.</p>
+          <div class="work-foot">
+            <a href="https://www.openbugbounty.org/reports/4257329/" target="_blank" class="tech" data-hover>View Report ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="bugbounty" data-hover>
+          <div class="work-head"><span class="work-tag tag-bounty">HALL OF FAME</span></div>
+          <h3 class="work-title">Bank Saqu Indonesia</h3>
+          <p class="work-desc">Acknowledged by PT Bank Saqu Indonesia for security contributions.</p>
+          <div class="work-foot">
+            <a href="https://drive.google.com/file/d/1bACB7WNzpFaLpNaJKwGjKzPX_7U7s1qg/view" target="_blank" class="tech" data-hover>View Letter ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="bugbounty" data-hover>
+          <div class="work-head"><span class="work-tag tag-bounty">OPENBUG BOUNTY</span></div>
+          <h3 class="work-title">MONETA Money Bank</h3>
+          <p class="work-desc">Security research disclosure for financial infrastructure.</p>
+          <div class="work-foot">
+            <a href="https://www.openbugbounty.org/reports/4279873/" target="_blank" class="tech" data-hover>View Report ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="other" data-hover>
+          <div class="work-head"><span class="work-tag tag-consult">OTHER</span></div>
+          <h3 class="work-title">PT MyRepublic</h3>
+          <p class="work-desc">Security disclosure for ISP network systems.</p>
+          <div class="work-foot">
+            <a href="https://www.openbugbounty.org/reports/4257330/" target="_blank" class="tech" data-hover>View Report ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="gov" data-hover>
+          <div class="work-head"><span class="work-tag tag-redteam">GOVERNMENT</span></div>
+          <h3 class="work-title">South Tangerang Govt</h3>
+          <p class="work-desc">Vulnerability disclosure for local government infrastructure.</p>
+          <div class="work-foot">
+            <a href="https://drive.google.com/file/d/1CcwZWxGTrOR2HlJC7zIcay4VnhISE-m6/view" target="_blank" class="tech" data-hover>View Letter ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="gov" data-hover>
+          <div class="work-head"><span class="work-tag tag-redteam">GOVERNMENT</span></div>
+          <h3 class="work-title">Makassar City Govt</h3>
+          <p class="work-desc">Responsible disclosure for regional government systems.</p>
+          <div class="work-foot">
+            <a href="https://drive.google.com/file/d/1jXta6MxEjWd0W9gEu7imeEx_G8puhXL9/view" target="_blank" class="tech" data-hover>View Letter ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="other" data-hover>
+          <div class="work-head"><span class="work-tag tag-consult">OTHER</span></div>
+          <h3 class="work-title">Intiwhiz Hospitality</h3>
+          <p class="work-desc">Security disclosure for hospitality management systems.</p>
+          <div class="work-foot">
+            <a href="https://drive.google.com/file/d/1-aoOHm3_FzlTAc_kZiN7BDwOIqtJqn9i/view" target="_blank" class="tech" data-hover>View Letter ↗</a>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="gov" data-hover>
+          <div class="work-head"><span class="work-tag tag-redteam">HALL OF FAME</span></div>
+          <h3 class="work-title">KNB (Netherlands)</h3>
+          <p class="work-desc">Koninklijke Notariële Beroepsorganisasi Responsible Disclosure HoF.</p>
+          <div class="work-foot">
+            <a href="https://www.knb.nl/responsible-disclosure-hall-of-fame" target="_blank" class="tech" data-hover>View HoF ↗</a>
+          </div>
+        </article>
+      </div>
+      <p class="cve-note">Also recognized by <strong>Redocly</strong>, <strong>MONETA Money Bank</strong>, <strong>PT MyRepublic</strong>, and <strong>Intiwhiz Hospitality</strong>.</p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section experience" id="experience">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title"><span class="title-bracket">[</span> experience <span class="title-bracket">]</span></h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="writeup-list">
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span class="writeup-tag">CURRENT</span>
+            <time class="writeup-date">Apr 2025 – Present</time>
+          </div>
+          <h3 class="writeup-title">Field Support — Moka POS</h3>
+          <p class="writeup-excerpt">Technical troubleshooting, maintenance for POS hardware, data management, and training for shop staff to minimize downtime.</p>
+        </div>
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span class="writeup-tag">RESEARCH</span>
+            <time class="writeup-date">Aug 2023 – Present</time>
+          </div>
+          <h3 class="writeup-title">Security Researcher — Independent</h3>
+          <p class="writeup-excerpt">Focusing on Web and API applications, identifying critical vulnerabilities following OWASP standards, and authoring detailed PoC reports.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTS -->
+    <section class="section cves" id="certs">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2 class="section-title"><span class="title-bracket">[</span> certifications <span class="title-bracket">]</span></h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="cve-table-wrap">
+        <table class="cve-table">
+          <thead>
+            <tr>
+              <th>Certification</th>
+              <th>Issuer</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-hover>
+              <td class="cve-id">CC Certified in Cybersecurity</td>
+              <td>ISC2</td>
+              <td><a href="https://drive.google.com/file/d/1oMwVH2LivrpxBdhCmMA_gQQ6N4nQ_rvw/view?usp=drivesdk" class="cve-link" target="_blank" data-hover>view ↗</a></td>
+            </tr>
+            <tr data-hover>
+              <td class="cve-id">CompTIA Security+ Prep</td>
+              <td>IT Masters</td>
+              <td><a href="https://drive.google.com/file/d/1VaUVRQxj_LS9zjmypdCU14rxDqKEAjC9/view?usp=drivesdk" class="cve-link" target="_blank" data-hover>view ↗</a></td>
+            </tr>
+            <tr data-hover>
+              <td class="cve-id">Cyber Security Management</td>
+              <td>IT Masters</td>
+              <td><a href="https://drive.google.com/file/d/1uNuW34zcbzmEpu4U3x2Guzms8YJxGxxO/view?usp=drivesdk" class="cve-link" target="_blank" data-hover>view ↗</a></td>
+            </tr>
+            <tr data-hover>
+              <td class="cve-id">System Admin &amp; IT Infrastructure</td>
+              <td>Google</td>
+              <td><a href="https://drive.google.com/file/d/1X1CgndzT-iA4fCqrW9-VRn2KKqlAgMJs/view?usp=drivesdk" class="cve-link" target="_blank" data-hover>view ↗</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2 class="section-title"><span class="title-bracket">[</span> ./engage.sh <span class="title-bracket">]</span></h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="contact-grid">
         <div class="contact-info">
-          <div class="contact-item"><i class="fas fa-envelope"></i><span>adnan@apriliyansyah.com</span></div>
-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Makassar, Indonesia</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="skills">
-    <div class="container">
-      <div class="section-header">
-        <h2>My Skills</h2>
-        <div class="underline"></div>
-      </div>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Security Expertise</h3>
-          <div class="skills-grid">
-            <div class="skill-item"><span>Web Penetration Testing</span></div>
-            <div class="skill-item"><span>API Security</span></div>
-            <div class="skill-item"><span>Vulnerability Assessment</span></div>
-            <div class="skill-item"><span>Responsible Disclosure</span></div>
+          <p class="contact-lead">
+            Open for <span class="hl">vulnerability research</span> and <span class="hl">penetration testing</span> engagements. If you want to secure your web assets or discuss a security project, get in touch.
+          </p>
+          <ul class="contact-channels">
+            <li>
+              <span class="ch-key">email</span>
+              <a href="mailto:adnan@apriliyansyah.com" class="ch-val" data-hover>adnan@apriliyansyah.com</a>
+            </li>
+            <li>
+              <span class="ch-key">whatsapp</span>
+              <a href="https://wa.me/628999166702" class="ch-val" data-hover>+62 899-9166-702</a>
+            </li>
+            <li>
+              <span class="ch-key">instagram</span>
+              <a href="https://www.instagram.com/adnanapriliyansyah" class="ch-val" data-hover>@adnanapriliyansyah</a>
+            </li>
+            <li>
+              <span class="ch-key">github</span>
+              <a href="https://github.com/AdnanApriliyansyahh" class="ch-val" data-hover>github.com/AdnanApriliyansyahh</a>
+            </li>
+            <li>
+              <span class="ch-key">medium</span>
+              <a href="https://medium.com/@muhadnan2828/" class="ch-val" data-hover>medium.com/@muhadnan2828</a>
+            </li>
+          </ul>
+          <div class="availability">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Currently <strong>available</strong> for Q4 2026</span>
           </div>
         </div>
-        <div class="skill-category">
-          <h3>Tools</h3>
-          <div class="skills-grid">
-            <div class="skill-item"><span>Burp Suite</span></div>
-            <div class="skill-item"><span>Nmap</span></div>
-            <div class="skill-item"><span>Recon Tools</span></div>
-            <div class="skill-item"><span>Exploit Frameworks</span></div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-head">
+            <span class="form-prompt">$ ./contact --new</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="response" class="response">
-    <div class="container">
-      <div class="section-header">
-        <h2>Responsible Disclosure</h2>
-        <div class="underline"></div>
-        <p class="desc">Companies where I reported vulnerabilities responsibly:</p>
-      </div>
-      <ul class="disclosure-list">
-       <li><span>BukuWarung</span><a href="https://bukuwarung.com/hall-of-fame/" target="_blank" class="btn small-btn">View</a></li>
-  <!--       <li><span>Bloomberg L.P</span><a href="https://bloomberg.com" target="_blank" class="btn small-btn">View</a></li> -->
-        <li><span>Asana</span><a href="https://www.openbugbounty.org/reports/4257343/" target="_blank" class="btn small-btn">View</a></li>
-          <li><span>Redocly</span><a href="https://www.openbugbounty.org/reports/4257329/" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>PT Bank Saqu Indonesia</span><a href="https://drive.google.com/file/d/1bACB7WNzpFaLpNaJKwGjKzPX_7U7s1qg/view" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>MONETA Money Bank</span><a href="https://www.openbugbounty.org/reports/4279873/" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>PT. MyRepublic</span><a href="https://www.openbugbounty.org/reports/4257330/" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>South Tangerang Government</span><a href="https://drive.google.com/file/d/1CcwZWxGTrOR2HlJC7zIcay4VnhISE-m6/view" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>Makassar City Government</span><a href="https://drive.google.com/file/d/1jXta6MxEjWd0W9gEu7imeEx_G8puhXL9/view" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>Intiwhiz Hospitality Management</span><a href="https://drive.google.com/file/d/1-aoOHm3_FzlTAc_kZiN7BDwOIqtJqn9i/view" target="_blank" class="btn small-btn">View</a></li>
-        <li><span>Koninklijke Notariële Beroepsorganisatie</span><a href="https://www.knb.nl/responsible-disclosure-hall-of-fame" target="_blank" class="btn small-btn">View</a></li>
-      </ul>
-<!--      <div class="disclosure-note">
-        <h3>Hall of Fame</h3>
-        <p>Recognized by organizations and government entities for contributing to their security improvement.</p> -->
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="experience">
-    <div class="container">
-      <div class="section-header">
-        <h2>Experience</h2>
-        <div class="underline"></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
-          <div class="timeline-content">
-            <h3>Security Researcher</h3>
-            <span class="timeline-date">Aug 2023 – Present</span>
-            <ul>
-              <li>Independent security research and Responsible Disclosure Bug Bounty efforts Responsible Disclosure focused on Web and API applications.</li>
-              <li>Responsible Disclosure Proactively Responsible Disclosure identified and reported critical vulnerabilities following OWASP standards.</li>
-              <li>Authored detailed reports with Proof-of-Concepts (PoCs), resulting in multiple Responsible Disclosureres ponsible disclosures and HoF recognitions Responsible Disclosure.</li>
-            </ul>
+          <div class="form-row">
+            <label for="f-name" class="form-label">name</label>
+            <input type="text" id="f-name" name="name" required placeholder="name" data-hover />
           </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
-          <div class="timeline-content">
-            <h3>Field Support</h3>
-            <h4>Moka POS</h4>
-            <span class="timeline-date">Apr 2025 – Present</span>
-            <ul>
-              <li>Conducted comprehensive training for shop owners and employees on the effective use of the POS and cashier application.</li>
-              <li>Managed and ensured data accuracy by meticulously inputting product SKU, product name, and pricing into the Point of Sale (POS) system.</li>
-              <li>Provided technical troubleshooting and hands-on maintenance for POS hardware to minimize downtime and resolve device errors</li>
-              <li>Documented all activities and support actions by generating detailed visit and maintenance reports.</li>
-            </ul>
+          <div class="form-row">
+            <label for="f-email" class="form-label">email</label>
+            <input type="email" id="f-email" name="email" required placeholder="email@example.com" data-hover />
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="certifications" class="certifications">
-    <div class="container">
-      <div class="section-header">
-        <h2>Certifications</h2>
-        <div class="underline"></div>
-      </div>
-      <div class="certifications-grid">
-        <div class="certification-card">
-            <div class="certification-content"><h3>CC Certified in Cybersecurity</h3><p>ISC2</p></div>
-            <a href="https://drive.google.com/file/d/1oMwVH2LivrpxBdhCmMA_gQQ6N4nQ_rvw/view?usp=drivesdk" target="_blank" class="btn small-btn">View</a>
-        </div>
-        <div class="certification-card">
-            <div class="certification-content"><h3>CompTIA Security+ Prep</h3><p>IT Masters</p></div>
-            <a href="https://drive.google.com/file/d/1VaUVRQxj_LS9zjmypdCU14rxDqKEAjC9/view?usp=drivesdk" target="_blank" class="btn small-btn">View</a>
-        </div>
-        <div class="certification-card">
-            <div class="certification-content"><h3>Cyber Security Management</h3><p>IT Masters</p></div>
-            <a href="https://drive.google.com/file/d/1uNuW34zcbzmEpu4U3x2Guzms8YJxGxxO/view?usp=drivesdk" target="_blank" class="btn small-btn">View</a>
-        </div>
-        <div class="certification-card">
-            <div class="certification-content"><h3>System Administration & IT Infrastructure</h3><p>Google</p></div>
-            <a href="https://drive.google.com/file/d/1X1CgndzT-iA4fCqrW9-VRn2KKqlAgMJs/view?usp=drivesdk" target="_blank" class="btn small-btn">View</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!--
-  <section id="education" class="education">
-    <div class="container">
-      <div class="section-header">
-        <h2>Education</h2>
-        <div class="underline"></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
-          <div class="timeline-content">
-            <h3>High School</h3>
-            <span class="timeline-date">2021 – 2025</span>
-            <p>State Senior High School 6 Bontoa Maros – Science.</p>
+          <div class="form-row">
+            <label for="f-engage" class="form-label">engagement type</label>
+            <select id="f-engage" name="engage" required data-hover>
+              <option value="">-- select --</option>
+              <option value="pentest">Web / API pentest</option>
+              <option value="audit">Vulnerability assessment</option>
+              <option value="other">Other</option>
+            </select>
           </div>
-        </div>
+          <div class="form-row">
+            <label for="f-msg" class="form-label">brief</label>
+            <textarea id="f-msg" name="message" rows="5" required placeholder="your message" data-hover></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" data-hover>
+            <span class="btn-text">transmit</span>
+            <span class="btn-icon">→</span>
+          </button>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+        </form>
       </div>
-    </div>
-  </section>
-  
-  -->
+    </section>
+  </main>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <h2>Get In Touch</h2>
-        <div class="underline"></div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">&gt; AdnanApriliyansyah</span>
+        <span class="footer-divider">·</span>
+        <span class="footer-tag">cybersecurity researcher</span>
       </div>
-      <div class="contact-container">
-<div class="contact-info-item clickable-email">
-  <div class="icon"><i class="fas fa-envelope"></i></div>
-  <div class="text">
-    <h3>Email</h3>
-    <p><a href="mailto:adnan@apriliyansyah.com">adnan@apriliyansyah.com</a></p>
-  </div>
-</div>
-
-        <div class="contact-info-item">
-          <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
-          <div class="text"><h3>WhatsApp</h3><p><a href="https://wa.me/628999166702" target="_blank">Contact with me</a></p></div>
-        </div>
+      <div class="footer-mid">
+        <span class="footer-meta">built with precision &amp; <code>recon</code></span>
       </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Muhammad Adnan Apriliyansyah</p>
+      <div class="footer-right">
+        <span class="footer-meta">© <span id="year"></span> · security with integrity</span>
       </div>
     </div>
   </footer>
